@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Xml.XPath;
 
 public class Day2
@@ -30,6 +31,42 @@ public class Day2
             }
             if(safe && negative == 0 || safe && negative == currentReport.Length -1)
                 safeReports++;
+            else
+            {
+                for (int j = 0; j < currentReport.Length; j++)
+                {
+                    negative = 0;
+                    safe = true;
+                    List<int> list = currentReport.ToList();
+                    list.RemoveAt(j);
+                    
+                    for (int i = 0; i < list.Count() -1; i++)
+                    {
+                        if(Math.Abs(list[i] - list[i+1]) > 3 ||
+                        Math.Abs(list[i] - list[i+1]) < 1)
+                        {
+                            safe = false;
+                        }
+                        else if(list[i] - list[i+1] < 0)
+                        {
+                            negative++;
+                        }
+                    }
+                    if(safe && negative == 0 || safe && negative == list.Count() -1)
+                    {
+                        safeReports++;
+                        break;
+                    }
+                    else
+                    {
+                        // Console.WriteLine($"Neg: {negative} list: {list.Count()}");
+                        // foreach (int n in list) Console.Write($" {n}");
+                        // Console.ReadLine();
+                    }
+                    
+                }
+                  
+            }
 
         }
         return safeReports;
