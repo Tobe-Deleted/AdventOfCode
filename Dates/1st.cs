@@ -23,10 +23,11 @@ public class Day1
             }
 
         }
-        Array.Sort(numbersLeft);
-        Array.Sort(numbersRight);
+        // Array.Sort(numbersLeft);
+        // Array.Sort(numbersRight);
         for(int i = 0; i < numbersLeft.Length; i++)
-            differences[i] = Math.Abs(numbersLeft[i] - numbersRight[i]);
+            differences[i] = numbersLeft[i] * numbersRight.Count(n => n == numbersLeft[i]);
+            //differences[i] = Math.Abs(numbersLeft[i] - numbersRight[i]);
 
         return differences.Sum();
     }
