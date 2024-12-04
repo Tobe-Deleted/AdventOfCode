@@ -4,10 +4,10 @@ public class Day1
 {
     public int TotalDistance(string str)
     {
-        int result = 0;
         string[] pairs = str.Replace("   ", " ").Split(" ");
         int[] numbersLeft = new int[pairs.Length / 2];
-        int[] numbersRight = new int[pairs.Length /2];
+        int[] numbersRight = new int[pairs.Length / 2];
+        int[] differences = new int[pairs.Length / 2];
         int l = 0; int r = 0;
         for(int i = 0; i < pairs.Length; i++)
         {
@@ -25,8 +25,9 @@ public class Day1
         }
         Array.Sort(numbersLeft);
         Array.Sort(numbersRight);
-        foreach (int i in numbersLeft) Console.WriteLine(i);
+        for(int i = 0; i < numbersLeft.Length; i++)
+            differences[i] = Math.Abs(numbersLeft[i] - numbersRight[i]);
 
-        return result;
+        return differences.Sum();
     }
 }
