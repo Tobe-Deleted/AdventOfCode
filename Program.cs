@@ -9,6 +9,7 @@ class Program
         Console.WriteLine(d1.TotalDistance(first1));
         Day2 d2 = new Day2();
         Console.WriteLine(d2.SafeReports("data/day2.txt"));
-        
+        Day3 d3 = new Day3();
+        Console.WriteLine(d3.Mul(File.ReadAllText("data/day3.txt")));
     }
 }

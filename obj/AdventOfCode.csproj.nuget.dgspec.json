@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Olive\\Documents\\kodehode\\AdventOfCode\\AdventOfCode.csproj": {}
+    "C:\\Users\\olli9\\VSC\\Personlig prosjekter\\AdventOfCode\\AdventOfCode.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Olive\\Documents\\kodehode\\AdventOfCode\\AdventOfCode.csproj": {
+    "C:\\Users\\olli9\\VSC\\Personlig prosjekter\\AdventOfCode\\AdventOfCode.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Olive\\Documents\\kodehode\\AdventOfCode\\AdventOfCode.csproj",
+        "projectUniqueName": "C:\\Users\\olli9\\VSC\\Personlig prosjekter\\AdventOfCode\\AdventOfCode.csproj",
         "projectName": "AdventOfCode",
-        "projectPath": "C:\\Users\\Olive\\Documents\\kodehode\\AdventOfCode\\AdventOfCode.csproj",
-        "packagesPath": "C:\\Users\\Olive\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Olive\\Documents\\kodehode\\AdventOfCode\\obj\\",
+        "projectPath": "C:\\Users\\olli9\\VSC\\Personlig prosjekter\\AdventOfCode\\AdventOfCode.csproj",
+        "packagesPath": "C:\\Users\\olli9\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\olli9\\VSC\\Personlig prosjekter\\AdventOfCode\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Olive\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\olli9\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
