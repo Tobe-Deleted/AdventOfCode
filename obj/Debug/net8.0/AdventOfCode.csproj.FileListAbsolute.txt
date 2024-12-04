@@ -12,3 +12,4 @@ C:\Users\Olive\Documents\kodehode\AdventOfCode\obj\Debug\net8.0\refint\AdventOfC
 C:\Users\Olive\Documents\kodehode\AdventOfCode\obj\Debug\net8.0\AdventOfCode.pdb
 C:\Users\Olive\Documents\kodehode\AdventOfCode\obj\Debug\net8.0\AdventOfCode.genruntimeconfig.cache
 C:\Users\Olive\Documents\kodehode\AdventOfCode\obj\Debug\net8.0\ref\AdventOfCode.dll
+C:\Users\Olive\Documents\kodehode\AdventOfCode\obj\Debug\net8.0\AdventOfCode.sourcelink.json
