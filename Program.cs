@@ -11,5 +11,7 @@ class Program
         Console.WriteLine(d2.SafeReports("data/day2.txt"));
         Day3 d3 = new Day3();
         Console.WriteLine(d3.Mul(File.ReadAllText("data/day3.txt")));
+        Day4 d4 = new Day4();
+        Console.WriteLine(d4.XMAS("data/day4test.txt"));
     }
 }
