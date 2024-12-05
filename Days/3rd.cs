@@ -8,16 +8,30 @@ public class Day3
         List<int> mul = new List<int>();
         bool test = true;
         string temp;
-        // Console.WriteLine(str.Substring(8964, 50));
-        // Console.ReadKey();
+        bool activate = true;
         for(int i = 0; i < str.Length -11; i++)
         {
+            if(str[i] == 'd' &&
+               str[i+1] == 'o' &&
+               str[i+2] == 'n' &&
+               str[i+3] == '\'' &&
+               str[i+4] == 't' &&
+               str[i+5] == '(' &&
+               str[i+6] == ')')
+                activate = false;
+
+            if(str[i] == 'd' &&
+               str[i+1] == 'o' &&
+               str[i+2] == '(' &&
+               str[i+3] == ')')
+                activate = true;
+
             if (str[i] == 'm' && 
                 str[i+1] == 'u' &&
                 str[i+2] == 'l' &&
-                str[i+3] == '(')
+                str[i+3] == '(' &&
+                activate)
             {
-                // Console.WriteLine($"{i}, {str.Length}, {mul.Count()}");
                 temp = str.Substring(i+4, 8);
                 if (temp.Contains(')') && temp.Contains(','))
                 {
@@ -34,13 +48,11 @@ public class Day3
                     if (test)
                     {
                         mul.Add(Convert.ToInt32(dt.Compute(temp, "")));
-                        Console.WriteLine(temp);
                     }
                     test = true;
                 }
             }
         }
-        // foreach (int i in mul) Console.WriteLine(i);
         return mul.Sum();
     }
 }
