@@ -16,57 +16,56 @@ public class Day4
         {
             for(int j = 0; j < xmasArray[i].Length; j++)
             {
-                //Console.WriteLine(j);
-                if(j < xmasArray[i].Length -3)
-                {
-                    if(xmasArray[i].Substring(j, 4) == "XMAS" || xmasArray[i].Substring(j, 4) == "SAMX") //straight
-                        xmasCounter++;
+                // if(j < xmasArray[i].Length -3) //Part 1
+                // {
+                //     if(xmasArray[i].Substring(j, 4) == "XMAS" || xmasArray[i].Substring(j, 4) == "SAMX") //straight
+                //         xmasCounter++;
 
-                    if (i < xmasArray[i].Length -3) // down
-                    {
-                        if(xmasArray[i][j] == 'X' &&
-                           xmasArray[i+1][j+1] == 'M' &&
-                           xmasArray[i+2][j+2] == 'A' &&
-                           xmasArray[i+3][j+3] == 'S') // forward diagonal down
-                            xmasCounter++;
+                //     if (i < xmasArray[i].Length -3) // top right to bottom left
+                //     {
+                //         if(xmasArray[i][j] == 'X' &&
+                //            xmasArray[i+1][j+1] == 'M' &&
+                //            xmasArray[i+2][j+2] == 'A' &&
+                //            xmasArray[i+3][j+3] == 'S') // bottom right
+                //             xmasCounter++;
                         
-                        if(xmasArray[i][j] == 'S' &&
-                           xmasArray[i+1][j+1] == 'A' &&
-                           xmasArray[i+2][j+2] == 'M' &&
-                           xmasArray[i+3][j+3] == 'X') // backward diagonal up
-                            xmasCounter++;
-                    }
+                //         if(xmasArray[i][j] == 'S' &&
+                //            xmasArray[i+1][j+1] == 'A' &&
+                //            xmasArray[i+2][j+2] == 'M' &&
+                //            xmasArray[i+3][j+3] == 'X')  //top left
+                //             xmasCounter++;
+                //     }
 
-                    if (i > 3) //up
-                    {
-                        if(xmasArray[i][j] == 'X' &&
-                           xmasArray[i-1][j+1] == 'M' &&
-                           xmasArray[i-2][j+2] == 'A' &&
-                           xmasArray[i-3][j+3] == 'S') // forward diagonal up
-                            xmasCounter++;
+                //     if (i > 2) //bottom left to upper right
+                //     {
+                //         if(xmasArray[i][j] == 'X' &&
+                //            xmasArray[i-1][j+1] == 'M' &&
+                //            xmasArray[i-2][j+2] == 'A' &&
+                //            xmasArray[i-3][j+3] == 'S') //top right
+                //             xmasCounter++;
 
-                        if(xmasArray[i][j] == 'S' &&
-                           xmasArray[i-1][j+1] == 'A' &&
-                           xmasArray[i-2][j+2] == 'M' &&
-                           xmasArray[i-3][j+3] == 'X') // Backward diagonal down
-                            xmasCounter++;
+                //         if(xmasArray[i][j] == 'S' &&
+                //            xmasArray[i-1][j+1] == 'A' &&
+                //            xmasArray[i-2][j+2] == 'M' &&
+                //            xmasArray[i-3][j+3] == 'X') //bottom left
+                //             xmasCounter++;
                         
-                    }
-                }
-                if(i < xmasArray.Length - 3)
-                {
-                    if(xmasArray[i][j] == 'X' &&
-                       xmasArray[i+1][j] == 'M' &&
-                       xmasArray[i+2][j] == 'A' &&
-                       xmasArray[i+3][j] == 'S') // down
-                        xmasCounter++;
+                //     }
+                // }
+                // if(i < xmasArray.Length - 3)
+                // {
+                //     if(xmasArray[i][j] == 'X' &&
+                //        xmasArray[i+1][j] == 'M' &&
+                //        xmasArray[i+2][j] == 'A' &&
+                //        xmasArray[i+3][j] == 'S')
+                //         xmasCounter++;
 
-                    if(xmasArray[i][j] == 'S' &&
-                       xmasArray[i+1][j] == 'A' &&
-                       xmasArray[i+2][j] == 'M' &&
-                       xmasArray[i+3][j] == 'X') // up
-                        xmasCounter++;
-                }
+                //     if(xmasArray[i][j] == 'S' &&
+                //        xmasArray[i+1][j] == 'A' &&
+                //        xmasArray[i+2][j] == 'M' &&
+                //        xmasArray[i+3][j] == 'X')
+                //         xmasCounter++;
+                // }
             }
         }
         return xmasCounter;
