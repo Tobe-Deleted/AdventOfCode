@@ -18,7 +18,16 @@ public class Day4
             {
                 if(xmasArray[i][j] == 'A' && j > 0 && j < xmasArray.Length -1 && i > 0 && i < xmasArray.Length -1)
                 {
-                    
+                    string xCheck1 = $"{xmasArray[i+1][j+1]}{xmasArray[i-1][j-1]}" ;
+                    string xCheck2 = $"{xmasArray[i-1][j+1]}{xmasArray[i+1][j-1]}" ;
+
+                    if (xCheck1 == "SM" || xCheck1 == "MS")
+                        if (xCheck2 == "SM" || xCheck2 == "MS")
+                        {
+                            Console.WriteLine($"{i}|{j}");
+                            xmasCounter++;
+                        }
+
                 }
                 // if(j < xmasArray[i].Length -3) //Part 1
                 // {
