@@ -16,6 +16,10 @@ public class Day4
         {
             for(int j = 0; j < xmasArray[i].Length; j++)
             {
+                if(xmasArray[i][j] == 'A' && j > 0 && j < xmasArray.Length -1 && i > 0 && i < xmasArray.Length -1)
+                {
+                    
+                }
                 // if(j < xmasArray[i].Length -3) //Part 1
                 // {
                 //     if(xmasArray[i].Substring(j, 4) == "XMAS" || xmasArray[i].Substring(j, 4) == "SAMX") //straight
