@@ -11,25 +11,13 @@ public class Day3
         bool activate = true;
         for(int i = 0; i < str.Length -11; i++)
         {
-            if(str[i] == 'd' &&
-               str[i+1] == 'o' &&
-               str[i+2] == 'n' &&
-               str[i+3] == '\'' &&
-               str[i+4] == 't' &&
-               str[i+5] == '(' &&
-               str[i+6] == ')')
+            if(str.Substring(i, 7) == "don't()")
                 activate = false;
 
-            if(str[i] == 'd' &&
-               str[i+1] == 'o' &&
-               str[i+2] == '(' &&
-               str[i+3] == ')')
+            if(str.Substring(i, 4) == "do()")
                 activate = true;
 
-            if (str[i] == 'm' && 
-                str[i+1] == 'u' &&
-                str[i+2] == 'l' &&
-                str[i+3] == '(' &&
+            if (str.Substring(i, 4) == "mul(" &&
                 activate)
             {
                 temp = str.Substring(i+4, 8);
