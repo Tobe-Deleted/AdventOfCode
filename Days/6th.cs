@@ -1,4 +1,5 @@
 using System.Data.Common;
+using System.Runtime;
 
 public class Day6
 {
@@ -23,8 +24,8 @@ public class Day6
         
         while(true)
         {
-            if(x+dx < 0 || x+dx > 129 ||
-               y+dy < 0 || y+dy > 129) // end logic
+            if(x+dx < 0 || x+dx >= 129 ||
+               y+dy < 0 || y+dy >= 129) // end logic
             {
                 // markedMap[x,y] = 'X'.ToString();
 
@@ -54,47 +55,53 @@ public class Day6
         int counter = 0;
         char[,] charArray = obstructionsMap;
         charArray[x,y] = '#';
-        int iterations = 0;
-        x = 59; y =62;
+        string[] loopCheckArray = new string[130*130];
+        x = 59; y =62; 
+        int iteration = 0;
 
         while(true)
         {
-            if(coordinatesSelector >= coordinates.Count()-1)
+            if(coordinatesSelector >= coordinates.Count()-1) //has tried all coords
                 return counter;
-            if(x+dx < 0 || x+dx > 129 ||
-               y+dy < 0 || y+dy > 129)
+            
+            if(x+dx < 0 || x+dx >= 129 ||
+               y+dy < 0 || y+dy >= 129) // is not loop
             {
                 charArray = obstructionsMap;
                 charArray[coordinates[coordinatesSelector][0], 
                           coordinates[coordinatesSelector][1]] = '#';
                           coordinatesSelector++;
                 x = 59; y = 62;
-                iterations = 0;
+                dx = -1; dy = 0;
             }
-            else if(iterations > mapString.Count(c => c == '#') * 4)
+            else if(loopCheckArray.Contains($"{x}{y}{dx}{dy}")) //is loop
             {
                 charArray = obstructionsMap;
                 charArray[coordinates[coordinatesSelector][0], 
                           coordinates[coordinatesSelector][1]] = '#';
                 coordinatesSelector++;
+                loopCheckArray = new string[130*130];
+                iteration = 0;
                 counter++;  
                 x = 59; y = 62;
-                iterations = 0; 
+                dx = -1; dy = 0;
+
             }
             else 
             {
-                if(map[x+dx][y+dy] == '#') //change direction
+                loopCheckArray[iteration] = $"{x}{y}{dx}{dy}";
+                iteration++;
+                if(obstructionsMap[x+dx, y+dy] == '#') //change direction
                 {
                     (dx, dy) = (dy, -dx);
-                    Console.WriteLine(iterations);
-                    Console.WriteLine(coordinatesSelector);
-                    iterations++;
                 }
                 else                        //straight path
                 {
                     y += dy; x += dx;
-                }
+                }           
             }
+            
+
         }
     }
 }
