@@ -6,28 +6,47 @@ public class Day5
     {
         List<int> middlePages = new List<int>{};
         var printOrders = File.ReadLines(printOrderFilePath);
-        string rulesUnsorted = File.ReadAllText(rulesFilePath); 
-        string[] rules = rulesUnsorted.Split(' '); //does not split. Array has 1 length
-        Console.WriteLine(rules.Length);
-        
+        string[] rules = File.ReadAllLines(rulesFilePath);
+
         foreach(string printOrder in printOrders)
         {
             string[] strArr = printOrder.Split(',');
             int missingRule = 0;
             for(int i = 0; i < strArr.Length; i++)
             {
-                foreach(string page in strArr)
+                if (i < strArr.Length -1)
                 {
-
-                    if(rules.Contains($"{strArr[i]}|{page}")) 
-                    {        
-                        missingRule++;
+                    foreach(string page in strArr)
+                    {
+                        if(!rules.Contains($"{strArr[i]}|{strArr[i+1]}"))
+                        {       
+                            missingRule++;
+                        }
                     }
                 }
             }
-            if(missingRule == strArr.Length)
+
+            if(missingRule > 0)
             {
-                middlePages.Add(Convert.ToInt32(strArr[strArr.Length /2]));
+                string[] currentPages = new string[strArr.Length];
+
+                foreach(string page in strArr)
+                {
+                    int placement = -1;
+
+                    for(int i = 0; i < strArr.Length; i++)
+                    {
+                        if(!rules.Contains($"{page}|{strArr[i]}"))
+                        {
+                            placement++;
+                        }
+                    }
+
+                    currentPages[placement] = page;
+                }
+
+                middlePages.Add(Convert.ToInt32(currentPages[currentPages.Length / 2]));
+
             }
             
         }

@@ -19,6 +19,7 @@ class Program
         // Console.WriteLine(d4.XMAS("data/day4.txt"));
 
         Day5 d5 = new Day5();
+        //Console.WriteLine(d5.PagePrinting("data/day5Test.txt", "data/day5RulesTest.txt"));
         Console.WriteLine(d5.PagePrinting("data/day5Printorder.txt", "data/day5Rules.txt"));
     }
 }
