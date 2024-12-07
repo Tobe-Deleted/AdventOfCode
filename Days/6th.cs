@@ -1,5 +1,6 @@
 using System.Data.Common;
 using System.Runtime;
+using System.Threading.Tasks.Dataflow;
 
 public class Day6
 {
@@ -11,10 +12,10 @@ public class Day6
         var map = File.ReadAllLines(filePath);
         string mapString = "";
         foreach(string line in map) mapString += line;
-        char[,] obstructionsMap = new char[130,130];
-        for(int i = 0; i < 130; i++)
+        char[,] obstructionsMap = new char[map.Count(),map.Count()];
+        for(int i = 0; i < map.Count(); i++)
         {
-            for(int n = 0; n < 130; n++)
+            for(int n = 0; n < map.Count(); n++)
             {
                 obstructionsMap[i,n] = map[i][n];
             }
@@ -26,8 +27,8 @@ public class Day6
         
         while(true)
         {
-            if(x+dx < 0 || x+dx >= 129 ||
-               y+dy < 0 || y+dy >= 129) // end logic
+            if(x+dx < 0 || x+dx >= map.Count()-1 ||
+               y+dy < 0 || y+dy >= map.Count()-1) // end logic
             {
                 // markedMap[x,y] = 'X'.ToString();
 
@@ -58,14 +59,19 @@ public class Day6
         int coordinatesSelector = 0;
         char[,] charArray = obstructionsMap;
         x = 59; y =62; 
+        foreach (int[] coord in coordinates)
+        {
+            foreach(int n in coord) Console.Write($"{n}, ");
+            Console.ReadKey();
+        }
 
         while(true)
         {
             if(coordinatesSelector >= coordinates.Count()-1 ) //has tried all coords
                 return counter;
             
-            if(x+dx < 0 || x+dx >= 129 ||
-               y+dy < 0 || y+dy >= 129) // is not loop
+            if(x+dx < 0 || x+dx >= map.Count() ||
+               y+dy < 0 || y+dy >= map.Count()) // is not loop
             {
                 if(coordinatesSelector > 0)
                 charArray[coordinates[coordinatesSelector-1][0], 
@@ -79,6 +85,7 @@ public class Day6
             }
             else if(t6.ConfirmLoop(x, y, dx, dy, charArray)) //is loop
             {
+                Console.WriteLine($"# - x: {coordinates[coordinatesSelector-1][0]} y: {coordinates[coordinatesSelector-1][1]}");
                 if(coordinatesSelector > 0)
                 charArray[coordinates[coordinatesSelector-1][0], 
                           coordinates[coordinatesSelector-1][1]] = '.';

@@ -23,6 +23,6 @@ class Program
         // Console.WriteLine(d5.PagePrinting("data/day5Printorder.txt", "data/day5Rules.txt"));
 
         Day6 d6 = new Day6();
-        Console.WriteLine(d6.GuardPath("data/day6.txt"));
+        Console.WriteLine(d6.GuardPath("data/day6test.txt"));
     }
 }
