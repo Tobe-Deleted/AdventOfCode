@@ -9,8 +9,8 @@ public class test6
         {
             
             if(coordinates.Contains($"{y}{x}{dx}{dy}")) return true;
-            if(x+dx < 0 || x+dx >= 129 ||
-               y+dy < 0 || y+dy >= 129) // end logic
+            if(x+dx < 0 || x+dx >= map.Length-1 ||
+               y+dy < 0 || y+dy >= map.Length-1) // end logic
             {
                 // markedMap[x,y] = 'X'.ToString();
 

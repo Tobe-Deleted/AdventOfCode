@@ -22,7 +22,10 @@ class Program
         // //Console.WriteLine(d5.PagePrinting("data/day5Test.txt", "data/day5RulesTest.txt"));
         // Console.WriteLine(d5.PagePrinting("data/day5Printorder.txt", "data/day5Rules.txt"));
 
-        Day6 d6 = new Day6();
-        Console.WriteLine(d6.GuardPath("data/day6test.txt"));
+        // Day6 d6 = new Day6();
+        // Console.WriteLine(d6.GuardPath("data/day6test.txt"));
+
+        Day7 d7 = new Day7();
+        Console.WriteLine(d7.CorrectOperators("data/day6test.txt"));
     }
 }

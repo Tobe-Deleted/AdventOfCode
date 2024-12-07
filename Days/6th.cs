@@ -8,7 +8,7 @@ public class Day6
     public int GuardPath(string filePath)
     {
         int dx = -1; int dy = 0;
-        int x = 59; int y = 62;
+        int x = 6; int y = 4;
         var map = File.ReadAllLines(filePath);
         string mapString = "";
         foreach(string line in map) mapString += line;
@@ -58,7 +58,7 @@ public class Day6
 
         int coordinatesSelector = 0;
         char[,] charArray = obstructionsMap;
-        x = 59; y =62; 
+        x = 6; y =4; 
         foreach (int[] coord in coordinates)
         {
             foreach(int n in coord) Console.Write($"{n}, ");
