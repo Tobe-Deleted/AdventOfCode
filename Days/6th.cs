@@ -3,6 +3,7 @@ using System.Runtime;
 
 public class Day6
 {
+    test6 t6 = new test6();
     public int GuardPath(string filePath)
     {
         int dx = -1; int dy = 0;
@@ -21,6 +22,7 @@ public class Day6
         // string[,] markedMap = new string[130,130];
         // string path = "";
         List<int[]> coordinates = new List<int[]>{};
+        int counter = 0;
         
         while(true)
         {
@@ -35,6 +37,8 @@ public class Day6
                 // }
 
                 //return path.Count(c => c == 'X');
+                int[] temp = {x,y};
+                coordinates.Add(temp);
                 break;
             }
 
@@ -52,46 +56,45 @@ public class Day6
         }
 
         int coordinatesSelector = 0;
-        int counter = 0;
         char[,] charArray = obstructionsMap;
-        charArray[x,y] = '#';
-        string[] loopCheckArray = new string[130*130];
         x = 59; y =62; 
-        int iteration = 0;
 
         while(true)
         {
-            if(coordinatesSelector >= coordinates.Count()-1) //has tried all coords
+            if(coordinatesSelector >= coordinates.Count()-1 ) //has tried all coords
                 return counter;
             
             if(x+dx < 0 || x+dx >= 129 ||
                y+dy < 0 || y+dy >= 129) // is not loop
             {
-                charArray = obstructionsMap;
+                if(coordinatesSelector > 0)
+                charArray[coordinates[coordinatesSelector-1][0], 
+                          coordinates[coordinatesSelector-1][1]] = '.';
+
                 charArray[coordinates[coordinatesSelector][0], 
                           coordinates[coordinatesSelector][1]] = '#';
                           coordinatesSelector++;
                 x = 59; y = 62;
                 dx = -1; dy = 0;
             }
-            else if(loopCheckArray.Contains($"{x}{y}{dx}{dy}")) //is loop
+            else if(t6.ConfirmLoop(x, y, dx, dy, charArray)) //is loop
             {
-                charArray = obstructionsMap;
+                if(coordinatesSelector > 0)
+                charArray[coordinates[coordinatesSelector-1][0], 
+                          coordinates[coordinatesSelector-1][1]] = '.';
+
                 charArray[coordinates[coordinatesSelector][0], 
                           coordinates[coordinatesSelector][1]] = '#';
                 coordinatesSelector++;
-                loopCheckArray = new string[130*130];
-                iteration = 0;
                 counter++;  
+                Console.WriteLine(counter);
                 x = 59; y = 62;
                 dx = -1; dy = 0;
 
             }
             else 
             {
-                loopCheckArray[iteration] = $"{x}{y}{dx}{dy}";
-                iteration++;
-                if(obstructionsMap[x+dx, y+dy] == '#') //change direction
+                if(charArray[x+dx, y+dy] == '#') //change direction
                 {
                     (dx, dy) = (dy, -dx);
                 }
@@ -100,8 +103,6 @@ public class Day6
                     y += dy; x += dx;
                 }           
             }
-            
-
         }
     }
 }
