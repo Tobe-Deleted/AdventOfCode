@@ -26,6 +26,6 @@ class Program
         // Console.WriteLine(d6.GuardPath("data/day6test.txt"));
 
         Day7 d7 = new Day7();
-        Console.WriteLine(d7.CorrectOperators("data/day6test.txt"));
+        Console.WriteLine(d7.CorrectOperators("data/day7.txt"));
     }
 }
