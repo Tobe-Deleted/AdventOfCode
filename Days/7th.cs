@@ -1,6 +1,7 @@
 using System.Security.Cryptography.X509Certificates;
 using System.Data;
 using System.Globalization;
+using System.Reflection.Metadata.Ecma335;
 
 public class Day7
 {
@@ -24,7 +25,7 @@ public class Day7
                 operators += "+";
             }
 
-            for (int n = 0; n < Math.Pow(2, operators.Length); n++)
+            for (int n = 0; n < Math.Pow(3, operators.Length); n++)
             {
                 equation = staticEquation;
                 for(int i = 0; i < operators.Length; i++)
@@ -36,11 +37,16 @@ public class Day7
                 string[] numbers = equation.Split('+', '*', '|');
                 long tempSum = 0;
 
-                // Console.WriteLine(equation + " | " + Sum);
+                //Console.WriteLine(equation + " | " + Sum);
                 for(int i = 0; i < operators.Length; i++)
                 {
                     if(i == 0)
+                    {
+                        if (operators[i] == '|')
+                            tempSum = Convert.ToInt64(numbers[i].ToString() + numbers[i+1]);
+                        else
                         tempSum += Convert.ToInt64(dt.Compute($"{numbers[i]}{operators[i]}{numbers[i+1]}", ""));
+                    }
                     else
                     {
                         switch (operators[i])
@@ -65,17 +71,7 @@ public class Day7
                 }
                 else
                 {
-                    operators = BinaryOperators(operators);
-                    if (Math.Pow(operators.Length, 2) == 1)
-                    {
-                        equation = equation.Replace('+', operators[0]).Replace('*', operators[0]);
-                        Console.WriteLine(equation + " | " + Sum);
-                        if(Convert.ToInt64(dt.Compute(equation, "")) == Sum)
-                        {
-                            validNumber = true;
-                            break;
-                        }
-                    }
+                    operators = TrinaryOperators(operators);
                 }
             }
             Console.WriteLine($"{validNumber} | {Sum}");
@@ -114,6 +110,57 @@ public class Day7
         }
 
         newOperators = newOperators.Replace('0', '+').Replace('1', '*'); // to operators
+        return newOperators;
+    }
+
+    public string TrinaryOperators(string operators)
+    {
+        if(operators.Length == 1)
+        {
+            switch(operators)
+            {
+                case "+":
+                    return "*";
+                case "*":
+                    return "|";
+                case "|":
+                    return "+";
+            }
+        }
+        operators = operators.Replace('+', '0').Replace('*', '1').Replace('|', '2'); // to Trinary
+        string newOperators = "";
+        long stringValue = 0;
+        long digitValue = 1;
+
+        for(int i = operators.Length-1; i > -1; i--) // to decimal
+        {
+            stringValue += digitValue * (Convert.ToInt32(operators[i]) -48);
+            digitValue *= 3;
+        }
+
+        stringValue += 1;
+
+        for(int i = 0; i < operators.Length; i++) // back to Trinary
+        {
+            digitValue /= 3;
+            //Console.WriteLine(stringValue + " | " + digitValue);
+            if(stringValue >= digitValue *2)
+            {
+                newOperators += '2';
+                stringValue -= digitValue *2;
+            }
+            else if(stringValue >= digitValue)
+            {
+                newOperators += '1';
+                stringValue -= digitValue;
+            }
+            else
+            {
+                newOperators += '0';
+            }
+        }
+
+        newOperators = newOperators.Replace('0', '+').Replace('1', '*').Replace('2', '|'); // to operators
         return newOperators;
     }
 }
