@@ -29,6 +29,6 @@ class Program
         // Console.WriteLine(d7.CorrectOperators("data/day7.txt"));
 
         Day8 d8 = new Day8();
-        Console.WriteLine(d8.AntiNodes("testdata/day8.txt"));
+        Console.WriteLine(d8.AntiNodes("data/day8.txt"));
     }
 }
