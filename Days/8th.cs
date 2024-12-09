@@ -4,6 +4,7 @@ public class Day8
 {
     public int AntiNodes(string filePath)
     {
+        Console.Clear();
         string antiNodes = "";
         string allChars = new String(File.ReadAllText(filePath).Replace(".", "").Distinct().ToArray());
         allChars = new string(allChars.ToCharArray()
@@ -43,15 +44,15 @@ public class Day8
             {
                 foreach(int[] coord in coords)
                 {
-                    Console.Clear();
-                    Console.WriteLine(" total list");
+                    // Console.Clear();
+                    // Console.WriteLine(" total list");
                     antiNodeCoords = antiNodeCoords.Distinct().ToList();
-                    foreach (int[] set in antiNodeCoords)
-                    {
-                        foreach(int digit in set) Console.Write($"{digit}, ");
-                        Console.WriteLine();
-                    }
-                    Console.ReadKey();         
+                    // foreach (int[] set in antiNodeCoords)
+                    // {
+                    //     foreach(int digit in set) Console.Write($"{digit}, ");
+                    //     Console.WriteLine();
+                    // }
+                    // Console.ReadKey();         
                     // Console.WriteLine("--------------" + coord[0] + " " + coord[1] + "------------------");
                     if(coords[i] != coord)
                     {
@@ -61,34 +62,35 @@ public class Day8
                         
                         if(coords[i][0] < coord[0])
                         {
-                            Console.WriteLine(" first if true");
+                            // Console.WriteLine(" first if true");
                             antiNodeCoord[0] = coords[i][0] - difference[0];
                         }
                         else
                         {
-                            Console.WriteLine(" first if false");
+                            // Console.WriteLine(" first if false");
                             antiNodeCoord[0] = coords[i][0] + difference[0];
                         }
 
                         if(coords[i][1] < coord[1])
                         {
-                            Console.WriteLine(" second if true");
+                            // Console.WriteLine(" second if true");
                             antiNodeCoord[1] = coords[i][1] - difference[1];
                         }
                         else
                         {
-                            Console.WriteLine(" second if false");
+                            // Console.WriteLine(" second if false");
                             antiNodeCoord[1] = coords[i][1] + difference[1];
                         }
-                        Console.ReadKey();
-                        
-                        if (antiNodeCoord[0] > -1 && antiNodeCoord[1] > -1 && antiNodeCoord[0] < 49 && antiNodeCoord[1] < 49)
+                        // Console.ReadKey();
+                        // Console.WriteLine(fullMap.Length );
+                        // Console.WriteLine($"{antiNodeCoord[0]}, {antiNodeCoord[1]}");
+                        if (antiNodeCoord[0] > -1 && antiNodeCoord[1] > -1 && antiNodeCoord[0] < fullMap.Length  && antiNodeCoord[1] < fullMap.Length )
                         {
-                            Console.Clear();
-                            Console.WriteLine($"{antiNodeCoord[0]}, {antiNodeCoord[1]}");
+                            // Console.Clear();
+                            // Console.WriteLine($"{antiNodeCoord[0]}, {antiNodeCoord[1]}");
                             antiNodeCoords.Add(antiNodeCoord);  
-                            Console.WriteLine("checkpoint 1");    
-                            Console.ReadKey();  
+                            // Console.WriteLine("checkpoint 1");    
+                            // Console.ReadKey();  
                         }
 
                         if(coords[i][1] > coord[1])
@@ -101,24 +103,25 @@ public class Day8
                         else
                             antiNodeCoord2[0] = coord[0] + difference[0];
                         
-                        
-                        if (antiNodeCoord2[0] > -1 && antiNodeCoord2[1] > -1 && antiNodeCoord2[0] < 49 && antiNodeCoord2[1] < 49)
+                        // Console.WriteLine($"{antiNodeCoord2[0]}, {antiNodeCoord2[1]}");
+                        if (antiNodeCoord2[0] > -1 && antiNodeCoord2[1] > -1 && antiNodeCoord2[0] < fullMap.Length  && antiNodeCoord2[1] < fullMap.Length )
                         {
-                            Console.Clear();
-                            Console.WriteLine($"{antiNodeCoord2[0]}, {antiNodeCoord2[1]}");
+                            // Console.Clear();
+                            // Console.WriteLine($"{antiNodeCoord2[0]}, {antiNodeCoord2[1]}");
                             antiNodeCoords.Add(antiNodeCoord2);   
-                            Console.WriteLine("checkpoint 2");   
-                            Console.ReadKey(); 
+                            // Console.WriteLine("checkpoint 2");   
+                            // Console.ReadKey(); 
                         }
                     }
 
                 }
+            }
+        }
                     foreach(int[] antiNode in antiNodeCoords)
                     {
                         editMap[antiNode[0],antiNode[1]] = '#';
+                        Console.WriteLine($"{antiNode[0]}, {antiNode[1]}");
                     }
-            }
-        }
 
         foreach(char c in editMap)
             antiNodes += c;
