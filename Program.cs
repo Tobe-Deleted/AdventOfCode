@@ -28,7 +28,10 @@ class Program
         // Day7 d7 = new Day7();
         // Console.WriteLine(d7.CorrectOperators("data/day7.txt"));
 
-        Day8 d8 = new Day8();
-        Console.WriteLine(d8.AntiNodes("data/day8.txt"));
+        // Day8 d8 = new Day8();
+        // Console.WriteLine(d8.AntiNodes("data/day8.txt"));
+
+        Day9 d9 = new Day9();
+        Console.WriteLine(d9.DiskFragmenter("testdata/day9.txt"));
     }
 }
