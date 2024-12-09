@@ -30,7 +30,14 @@ public class Day8
                     }
                 }
             }
-            
+            // foreach(int[] te in coords)
+            // {
+            //     foreach(int t in te)
+            //     {
+            //         Console.WriteLine(t);
+            //         Console.ReadKey();
+            //     }
+            // }
 
             for(int i = 0; i  < coords.Count(); i++)
             {
@@ -41,7 +48,6 @@ public class Day8
                     {
                         int[] difference = {Math.Abs(coords[i][0] - coord[0]), Math.Abs(coords[i][1] - coord[1])};
                         int[] antiNodeCoord = new int[2];
-                        bool isValid = true;
                         
                         if(coords[i][0] < coord[0])
                             antiNodeCoord[0] = coords[i][0] - difference[0];
@@ -52,22 +58,14 @@ public class Day8
                             antiNodeCoord[1] = coords[i][1] - difference[1];
                         else
                             antiNodeCoord[1] = coords[i][1] + difference[1];
-                        // Console.WriteLine("check: " + antiNodeCoord[0] + "," + antiNodeCoord[1]);
-                        foreach(int n in antiNodeCoord)
-                        {
-                            if (n < 0 || n > 49)
-                                isValid = false;
-                        }
-                            // Console.WriteLine("after check: " + antiNodeCoord[0] + "," + antiNodeCoord[1] + " | " + isValid);    
 
-                        if(isValid)
+                        
+                        if (antiNodeCoord[0] > -1 && antiNodeCoord[1] > -1 && antiNodeCoord[0] < 49 && antiNodeCoord[1] < 49)
                         {
                             antiNodeCoords.Add(antiNodeCoord);
-                            Console.WriteLine($"1st: {antiNodeCoord[1]}, {antiNodeCoord[0]}");
+                            Console.WriteLine($"{antiNodeCoord[0]}, {antiNodeCoord[1]}");
                             Console.ReadKey();
                         }
-                        else
-                            isValid = true;
 
                         if(coords[i][1] > coord[1])
                             antiNodeCoord[1] = coord[1] - difference[1];
@@ -79,17 +77,11 @@ public class Day8
                         else
                             antiNodeCoord[0] = coord[0] + difference[0];
                         
-                    // Console.WriteLine("check: " + antiNodeCoord[0] + "," + antiNodeCoord[1]);
-                        foreach(int n in antiNodeCoord)
-                        {
-                            if (n < 0 || n > 49)
-                                isValid = false;
-                        }
-                    // Console.WriteLine("after check: " + antiNodeCoord[0] + "," + antiNodeCoord[1] + " | " + isValid);      
-                        if(isValid)
+                        
+                        if (antiNodeCoord[0] > -1 && antiNodeCoord[1] > -1 && antiNodeCoord[0] < 49 && antiNodeCoord[1] < 49)
                         {
                             antiNodeCoords.Add(antiNodeCoord);
-                            Console.WriteLine($"2nd: {antiNodeCoord[1]}, {antiNodeCoord[0]}");
+                            Console.WriteLine($"{antiNodeCoord[0]}, {antiNodeCoord[1]}");
                             Console.ReadKey();
                         }
                     }
@@ -97,8 +89,6 @@ public class Day8
                 }
                     foreach(int[] antiNode in antiNodeCoords)
                     {
-                        Console.WriteLine($"{antiNode[0]},{antiNode[1]}");
-                        Console.ReadKey();
                         editMap[antiNode[0],antiNode[1]] = '#';
                     }
             }
