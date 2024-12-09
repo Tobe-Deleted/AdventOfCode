@@ -43,46 +43,72 @@ public class Day8
             {
                 foreach(int[] coord in coords)
                 {
+                    Console.Clear();
+                    Console.WriteLine(" total list");
+                    antiNodeCoords = antiNodeCoords.Distinct().ToList();
+                    foreach (int[] set in antiNodeCoords)
+                    {
+                        foreach(int digit in set) Console.Write($"{digit}, ");
+                        Console.WriteLine();
+                    }
+                    Console.ReadKey();         
                     // Console.WriteLine("--------------" + coord[0] + " " + coord[1] + "------------------");
                     if(coords[i] != coord)
                     {
                         int[] difference = {Math.Abs(coords[i][0] - coord[0]), Math.Abs(coords[i][1] - coord[1])};
                         int[] antiNodeCoord = new int[2];
+                        int[] antiNodeCoord2 = new int[2];
                         
                         if(coords[i][0] < coord[0])
+                        {
+                            Console.WriteLine(" first if true");
                             antiNodeCoord[0] = coords[i][0] - difference[0];
+                        }
                         else
+                        {
+                            Console.WriteLine(" first if false");
                             antiNodeCoord[0] = coords[i][0] + difference[0];
+                        }
 
                         if(coords[i][1] < coord[1])
+                        {
+                            Console.WriteLine(" second if true");
                             antiNodeCoord[1] = coords[i][1] - difference[1];
+                        }
                         else
+                        {
+                            Console.WriteLine(" second if false");
                             antiNodeCoord[1] = coords[i][1] + difference[1];
-
+                        }
+                        Console.ReadKey();
                         
                         if (antiNodeCoord[0] > -1 && antiNodeCoord[1] > -1 && antiNodeCoord[0] < 49 && antiNodeCoord[1] < 49)
                         {
-                            antiNodeCoords.Add(antiNodeCoord);
+                            Console.Clear();
                             Console.WriteLine($"{antiNodeCoord[0]}, {antiNodeCoord[1]}");
-                            Console.ReadKey();
+                            antiNodeCoords.Add(antiNodeCoord);  
+                            Console.WriteLine("checkpoint 1");    
+                            Console.ReadKey();  
                         }
 
                         if(coords[i][1] > coord[1])
-                            antiNodeCoord[1] = coord[1] - difference[1];
+                            antiNodeCoord2[1] = coord[1] - difference[1];
                         else
-                            antiNodeCoord[1] = coord[1] + difference[1];
+                            antiNodeCoord2[1] = coord[1] + difference[1];
 
                         if(coords[i][0] > coord[0])
-                            antiNodeCoord[0] = coord[0] - difference[0];
+                            antiNodeCoord2[0] = coord[0] - difference[0];
                         else
-                            antiNodeCoord[0] = coord[0] + difference[0];
+                            antiNodeCoord2[0] = coord[0] + difference[0];
                         
                         
-                        if (antiNodeCoord[0] > -1 && antiNodeCoord[1] > -1 && antiNodeCoord[0] < 49 && antiNodeCoord[1] < 49)
+                        if (antiNodeCoord2[0] > -1 && antiNodeCoord2[1] > -1 && antiNodeCoord2[0] < 49 && antiNodeCoord2[1] < 49)
                         {
-                            antiNodeCoords.Add(antiNodeCoord);
-                            Console.WriteLine($"{antiNodeCoord[0]}, {antiNodeCoord[1]}");
-                            Console.ReadKey();
+                            Console.Clear();
+                            Console.WriteLine($"{antiNodeCoord2[0]}, {antiNodeCoord2[1]}");
+                            antiNodeCoords.Add(antiNodeCoord2);   
+                            Console.WriteLine("checkpoint 2");   
+                            Console.ReadKey(); 
                         }
                     }
 
