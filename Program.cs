@@ -32,6 +32,6 @@ class Program
         // Console.WriteLine(d8.AntiNodes("data/day8.txt"));
 
         Day9 d9 = new Day9();
-        Console.WriteLine(d9.DiskFragmenter("data/day9.txt"));
+        Console.WriteLine(d9.DiskFragmenter("testdata/day9.txt"));
     }
 }
