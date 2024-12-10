@@ -44,7 +44,23 @@ public class Day9()
             }
         }
 
-        Console.WriteLine(blockExpander);
+        string dataCompacter = blockExpander;
+
+        for(int i = 0; i < blockExpander.Count(c => c == '.'); i++)
+        {
+
+            dataCompacter = dataCompacter.Remove(dataCompacter.IndexOf('.'), 1)
+                                         .Insert(dataCompacter.IndexOf('.'), 
+                                                 dataCompacter[dataCompacter.Length -1].ToString())
+                                         .Remove(dataCompacter.Length -1, 1);
+
+        }
+
+        for(int i = 0; i < dataCompacter.Length; i++)
+        {
+            result += i * (dataCompacter[i]-48);
+        }
+
         return result;
     }
 }
