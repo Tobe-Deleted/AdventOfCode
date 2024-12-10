@@ -26,11 +26,15 @@ public class Day9()
         }
         // foreach(char ch in emptyPointers)Console.WriteLine(ch);
         string blockExpander = "";
+        int[] IDtracker = new int[filePointers.Length];
+
         for(int i = 0; i < filePointers.Length; i++)
         {
+            Console.WriteLine(i);
             for(int n = 0; n < Convert.ToInt32(filePointers[i])-48; n++)
             {
                 blockExpander += $"{i}";
+                IDtracker[i] = $"{i}".Length;
             }
             // Console.WriteLine($"{i}, {emptyPointers.Length}");
             if(i != emptyPointers.Length)
@@ -39,26 +43,29 @@ public class Day9()
                 for(int j = 0; j < Convert.ToInt32(emptyPointers[i] -48); j++)
                 {
                     blockExpander += ".";
-                    // Console.WriteLine(blockExpander);
                 }
             }
         }
+                    Console.WriteLine(blockExpander);
 
         string dataCompacter = blockExpander;
 
         for(int i = 0; i < blockExpander.Count(c => c == '.'); i++)
         {
-            dataCompacter = dataCompacter.Remove(dataCompacter.IndexOf('.'), 1)
-                                         .Insert(dataCompacter.IndexOf('.'), 
-                                                 dataCompacter[dataCompacter.Length -1].ToString())
+            for(int j = 1; j < IDtracker[IDtracker.Length -i]; j++)
+            {
+                Console.WriteLine(j);
+            dataCompacter = dataCompacter.Insert(dataCompacter.IndexOf('.'), dataCompacter[dataCompacter.Length -1].ToString())
                                          .Remove(dataCompacter.Length -1, 1);
-
+            }
+            dataCompacter = dataCompacter.Remove(dataCompacter.IndexOf('.'), 1);
         }
+
+        Console.WriteLine(dataCompacter);
 
         for(int i = 0; i < dataCompacter.Length; i++)
         {
-            if(result < 0) throw new Exception();
-            Console.WriteLine(result);
+            // Console.WriteLine(result);
             result += i * (dataCompacter[i]-48);
         }
 
