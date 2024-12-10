@@ -19,8 +19,9 @@ public class Day9()
             }
             else
             {
-                Console.WriteLine(rawData[i]);
+                // Console.WriteLine(rawData[i]);
                 emptyPointers[ep] = rawData[i];
+                ep++;
             }
         }
         // foreach(char ch in emptyPointers)Console.WriteLine(ch);
@@ -38,12 +39,12 @@ public class Day9()
                 for(int j = 0; j < Convert.ToInt32(emptyPointers[i] -48); j++)
                 {
                     blockExpander += ".";
-                    Console.WriteLine(blockExpander);
+                    // Console.WriteLine(blockExpander);
                 }
             }
         }
 
-        // Console.WriteLine(blockExpander);
+        Console.WriteLine(blockExpander);
         return result;
     }
 }
