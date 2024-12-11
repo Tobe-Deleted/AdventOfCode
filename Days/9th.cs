@@ -29,6 +29,7 @@ public class Day9()
                     blockExpander.Add(index);
                 }
                     index++;
+                    
             }
             else
             {
