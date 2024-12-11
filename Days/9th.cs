@@ -17,49 +17,62 @@ public class Day9()
         }
 
         List<int> blockExpander= new List<int>{};
+        int index = 0;
 
         for(int i = 0; i < filePointers.Length; i++)
         {
             // Console.WriteLine($"{i}, {filePointers[i]}");
             if(i % 2 == 0)
             {
-                for(int j = 0; j <= filePointers[i]; j++)
+                for(int j = 0; j < filePointers[i]; j++)
                 {
-                    blockExpander.Add(i);
+                    blockExpander.Add(index);
                 }
+                    index++;
             }
             else
             {
-                for(int j = 0; j <= filePointers[i]; j++)
+                for(int j = 0; j < filePointers[i]; j++)
                 {
+                    // Console.WriteLine($"{j}, {filePointers[i]}");
                     blockExpander.Add(-1);
+                    // Console.ReadKey();
                 }
             }
 
         }
-                    foreach(int i in blockExpander)Console.WriteLine(i);
+                    // foreach(int i in blockExpander)Console.WriteLine(i);
 
         
-        for(int i = 0; i < blockExpander.Count(); i++)
+        for(int i = 0; i < blockExpander.Count(nodes => nodes == -1); i++)
         {
             if(blockExpander[blockExpander.Count()-1 -i] != -1)
             {
-                for(int j = 0; i < blockExpander.Count(); j++)
+                // Console.WriteLine(blockExpander[blockExpander.Count()-1 -i]);
+                for(int j = 0; j < blockExpander.Count(); j++)
                 {
                     if(blockExpander[j] == -1)
                     {
-                        blockExpander[j], blockExpander[blockExpander.Count()-1 -i]
+                        // Console.WriteLine(i);
+                        // Console.WriteLine($"{blockExpander[blockExpander.Count()-1 -i]}, {blockExpander[j]}");
+                        int b = blockExpander.Count()-1 -i;
+                        (blockExpander[j], blockExpander[b]) = (blockExpander[b], blockExpander[j]);
+                        // foreach(int  integ in blockExpander)Console.Write($"{integ}, ");
+                        // Console.WriteLine();
+                        // Console.ReadKey();
+                        break;
                     }
                 }
             }
         }
-
-
-        // for(int i = 0; i < dataCompacter.Length; i++)
-        // {
-        //     // Console.WriteLine(result);
-        //     result += i * (dataCompacter[i]-48);
-        // }
+        // foreach(int i in blockExpander)Console.WriteLine(i);
+        // Console.WriteLine("ending");
+        for(int i = 0; i < blockExpander.Count(); i++)
+        {
+            // Console.WriteLine($"{i}, {blockExpander[i]}");
+            if(blockExpander[i] > -1)
+            result += i * blockExpander[i];
+        }
 
         return result;
     }
