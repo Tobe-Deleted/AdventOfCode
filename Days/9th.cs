@@ -8,12 +8,23 @@ public class Day9()
         long result = 0;
         string rawData = File.ReadAllText(filePath);
         int[] filePointers = new int[rawData.Length];
+        int[] fileBlockSize = new int [(rawData.Length /2) +1];
         int fp = 0;
 
         for (int i = 0; i < rawData.Length; i++)
         {
                 filePointers[fp] = Convert.ToInt32(rawData[i] -48);
                 fp++;
+        }
+
+        fp = 0;
+        for(int i = 0; i < rawData.Length; i++)
+        {
+            if(i % 2 == 0)
+            {
+                fileBlockSize[fp] = rawData[i];
+                fp++;
+            }
         }
 
         List<int> blockExpander= new List<int>{};
