@@ -27,6 +27,8 @@ public class Day9()
             }
         }
 
+        Array.Reverse(fileBlockSize);
+
         List<int> blockExpander= new List<int>{};
         int index = 0;
 
@@ -56,7 +58,7 @@ public class Day9()
                     // foreach(int i in blockExpander)Console.WriteLine(i);
 
         
-        for(int i = 0; i < blockExpander.Count(nodes => nodes == -1); i++)
+        for(int i = 0; i < blockExpander.Count(nodes => nodes == -1); i++) // TODO: rewrite this part to order the parts correctly
         {
             if(blockExpander[blockExpander.Count()-1 -i] != -1)
             {
