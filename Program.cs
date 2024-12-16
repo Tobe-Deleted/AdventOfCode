@@ -35,6 +35,6 @@ class Program
         // Console.WriteLine(d9.DiskFragmenter("data/day9.txt")); //TODO: finish part 2
 
         Day10 d10 = new Day10();
-        Console.WriteLine("testdata/day10.txt");
+        Console.WriteLine(d10.TrailHeadScore("testdata/day10.txt"));
     }
 }
